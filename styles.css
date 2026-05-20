@@ -1,0 +1,90 @@
+/* ===== Variables y Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-fondo: #0f1117;
+  --color-superficie: #1a1d27;
+  --color-borde: #2a2d3a;
+  --color-acento: #6c63ff;
+  --color-acento-hover: #574fd6;
+  --color-texto: #e8e8f0;
+  --color-texto-suave: #8888aa;
+  --radio-borde: 12px;
+}
+
+body {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: 'Segoe UI', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 40px 16px;
+}
+
+/* ===== Contenedor principal ===== */
+.contenedor-principal {
+  width: 100%;
+  max-width: 860px;
+}
+
+/* ===== Título ===== */
+.titulo {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 28px;
+  color: var(--color-acento);
+  letter-spacing: 1px;
+}
+
+/* ===== Caja de búsqueda ===== */
+.caja-busqueda {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.campo-texto {
+  flex: 1;
+  padding: 12px 18px;
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-borde);
+  color: var(--color-texto);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.25s;
+}
+
+.campo-texto:focus {
+  border-color: var(--color-acento);
+}
+
+.campo-texto::placeholder {
+  color: var(--color-texto-suave);
+}
+
+.boton {
+  padding: 12px 24px;
+  background: var(--color-acento);
+  color: #fff;
+  border: none;
+  border-radius: var(--radio-borde);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.1s;
+}
+
+.boton:hover {
+  background: var(--color-acento-hover);
+}
+
+.boton:active {
+  transform: scale(0.97);
+}
