@@ -85,12 +85,20 @@ body {
     background-color: green;
 }
 
+.boton_generar {
+    background-color: #3843df;
+}
+
 .boton:hover {
   background: var(--color-acento-hover);
 }
 
 .boton_refresh:hover {
     background-color: #00440c;
+}
+
+.boton_generar:hover {
+    background-color: #2a36c7;
 }
 
 .boton:active {

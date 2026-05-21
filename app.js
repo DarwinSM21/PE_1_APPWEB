@@ -4,6 +4,8 @@ const botonBuscar     = document.getElementById('boton-buscar');
 const mensajeEstado   = document.getElementById('mensaje-estado');
 const contenedorTarjetas = document.getElementById('contenedor-tarjetas');
 const listaUsuarios   = document.getElementById('lista-usuarios');
+// ===== Semilla actual =====
+let semillaActual = localStorage.getItem('seed') || 'carpets';
 
 // ===== Evento: clic en botón =====
 botonBuscar.addEventListener('click', realizarBusqueda);
@@ -30,7 +32,7 @@ async function realizarBusqueda() {
 
   try {
     // Pedimos 20 usuarios con la misma semilla y filtramos por nombre localmente
-    const respuesta = await fetch('https://randomuser.me/api/?results=20&nat=es,mx,ar,co&seed=carpets');
+    const respuesta = await fetch(`https://randomuser.me/api/?results=20&nat=es,mx,ar,co&seed=${semillaActual}` );
     const datos = await respuesta.json();
 
     const usuariosFiltrados = datos.results.filter((usuario) => {
@@ -83,7 +85,7 @@ function mostrarMensaje(texto) {
 // ===== Carga y muestra la lista inicial de usuarios =====
 async function cargarListaInicial() {
   try {
-    const respuesta = await fetch('https://randomuser.me/api/?results=20&nat=es,mx,ar,co&seed=carpets');
+    const respuesta = await fetch(`https://randomuser.me/api/?results=20&nat=es,mx,ar,co&seed=${semillaActual}`);
     const datos = await respuesta.json();
     listaUsuarios.innerHTML = '';
     datos.results.forEach(mostrarElementoLista);
@@ -120,5 +122,25 @@ function refrescarBusqueda() {
     contenedorTarjetas.innerHTML = '';
 
     // Limpiar mensaje
+    mostrarMensaje('');
+}
+
+function generarNuevosUsuarios() {
+
+    // Genera una semilla aleatoria
+    semillaActual = Math.random().toString(36).substring(2);
+
+    // Guardar nueva seed
+    localStorage.setItem('seed', semillaActual);
+
+    // Limpiar lista actual
+    listaUsuarios.innerHTML = '';
+
+    // Cargar nuevos usuarios
+    cargarListaInicial();
+
+    // Limpiar búsqueda
+    contenedorTarjetas.innerHTML = '';
+    campoBusqueda.value = '';
     mostrarMensaje('');
 }
