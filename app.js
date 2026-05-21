@@ -109,3 +109,16 @@ function mostrarElementoLista(usuario) {
 
   listaUsuarios.appendChild(elemento);
 }
+
+// ===== Función de refrescar búsqueda =====
+function refrescarBusqueda() {
+
+    // Limpiar input
+    campoBusqueda.value = '';
+
+    // Limpiar tarjetas actuales
+    contenedorTarjetas.innerHTML = '';
+
+    // Limpiar mensaje
+    mostrarMensaje('');
+}
